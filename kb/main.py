@@ -19,19 +19,15 @@ class Model:
 
     def select_action(self):
         self.current_action_set.selected_action().select()
-        self.print_status()
 
     def next_set(self):
         self.current_action_set = self.action_set_cycle.next_set()
-        self.print_status()
 
     def previous_action(self):
         self.current_action_set.previous_action()
-        self.print_status()
 
     def next_action(self):
         self.current_action_set.next_action()
-        self.print_status()
 
 
 def read_data():
@@ -54,4 +50,5 @@ while True:
     if current_id != last_id:
         last_id = current_id
         button_to_command[button]()
+        model.print_status()
     time.sleep(0.1)
