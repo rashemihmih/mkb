@@ -1,7 +1,9 @@
 .idea
+__pycache__
 .tmp_versions
 *.o*
 *.ko*
+*.mod.*
 *.symvers
 *.order
 

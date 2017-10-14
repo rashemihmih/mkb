@@ -1,39 +1,37 @@
-import uinput
 import time
+
+from action_buffer import buffer_to_string, execute_buffer
+from action_set import Letters, CapitalLetters
+from action_set_cycle import ActionSetCycle
 
 DATA_PATH = '/proc/mouseListener/info'
 
-# device = uinput.Device([
-#     uinput.KEY_E,
-#     uinput.KEY_H,
-#     uinput.KEY_L,
-#     uinput.KEY_O,
-#     uinput.KEY_C,
-#     uinput.KEY_LEFTCTRL,
-#     uinput.KEY_BACKSLASH,
-#     uinput.KEY_LEFTSHIFT
-# ])
-# time.sleep(1)
 
+class Model:
+    action_set_cycle = ActionSetCycle([Letters(), CapitalLetters()])
+    current_action_set = action_set_cycle.selected_set()
 
-def execute_action():
-    print('execute_action')
+    def print_status(self):
+        print()
+        print('Action:', self.current_action_set.selected_action().name)
+        print('Buffer:', buffer_to_string())
+        print('Set:', self.current_action_set.name)
 
+    def select_action(self):
+        self.current_action_set.selected_action().select()
+        self.print_status()
 
-def next_set():
-    print('next_set')
+    def next_set(self):
+        self.current_action_set = self.action_set_cycle.next_set()
+        self.print_status()
 
+    def previous_action(self):
+        self.current_action_set.previous_action()
+        self.print_status()
 
-def previous_action():
-    print('previous_action')
-
-
-def next_action():
-    print('next_action')
-
-
-def execute_buffer():
-    print('execute_buffer')
+    def next_action(self):
+        self.current_action_set.next_action()
+        self.print_status()
 
 
 def read_data():
@@ -41,14 +39,16 @@ def read_data():
         return int(f.readline()), f.readline().strip()
 
 
+model = Model()
 button_to_command = {
-    'LEFT': execute_action,
-    'RIGHT': next_set,
+    'LEFT': model.select_action,
+    'RIGHT': model.next_set,
     'MIDDLE': execute_buffer,
-    'WHEELUP': previous_action,
-    'WHEELDOWN': next_action
+    'WHEELUP': model.previous_action,
+    'WHEELDOWN': model.next_action
 }
 last_id = read_data()[0]
+model.print_status()
 while True:
     current_id, button = read_data()
     if current_id != last_id:
