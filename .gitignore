@@ -1,0 +1,7 @@
+.idea
+.tmp_versions
+*.o*
+*.ko*
+*.symvers
+*.order
+
