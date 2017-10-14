@@ -1,14 +1,14 @@
 import time
 
 from action_buffer import buffer_to_string, execute_buffer
-from action_set import Letters, CapitalLetters
+from action_set import Letters, CapitalLetters, Digits, Symbols, Controls
 from action_set_cycle import ActionSetCycle
 
 DATA_PATH = '/proc/mouseListener/info'
 
 
 class Model:
-    action_set_cycle = ActionSetCycle([Letters(), CapitalLetters()])
+    action_set_cycle = ActionSetCycle([Letters(), CapitalLetters(), Digits(), Symbols(), Controls()])
     current_action_set = action_set_cycle.selected_set()
 
     def print_status(self):

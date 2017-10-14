@@ -1,6 +1,6 @@
 import uinput
 
-from action import Click, Shift
+from action import Click, Shift, Control
 
 
 class ActionSet:
@@ -87,4 +87,82 @@ class CapitalLetters(ActionSet):
             Shift('X', uinput.KEY_X),
             Shift('Y', uinput.KEY_Y),
             Shift('Z', uinput.KEY_Z)
+        ])
+
+
+class Digits(ActionSet):
+    def __init__(self):
+        super().__init__('Digits', [
+            Click('0', uinput.KEY_0),
+            Click('1', uinput.KEY_1),
+            Click('2', uinput.KEY_2),
+            Click('3', uinput.KEY_3),
+            Click('4', uinput.KEY_4),
+            Click('5', uinput.KEY_5),
+            Click('6', uinput.KEY_6),
+            Click('7', uinput.KEY_7),
+            Click('8', uinput.KEY_8),
+            Click('9', uinput.KEY_9)
+        ])
+
+
+class Symbols(ActionSet):
+    def __init__(self):
+        super().__init__('Symbols', [
+            Click(',', uinput.KEY_COMMA),
+            Click('.', uinput.KEY_DOT),
+            Click(';', uinput.KEY_SEMICOLON),
+            Shift(':', uinput.KEY_SEMICOLON),
+            Shift('?', uinput.KEY_SLASH),
+            Shift('!', uinput.KEY_1),
+            Click('\'', uinput.KEY_APOSTROPHE),
+            Shift('"', uinput.KEY_APOSTROPHE),
+            Shift('_', uinput.KEY_MINUS),
+            Click('-', uinput.KEY_MINUS),
+            Shift('+', uinput.KEY_EQUAL),
+            Shift('*', uinput.KEY_8),
+            Click('/', uinput.KEY_SLASH),
+            Click('=', uinput.KEY_EQUAL),
+            Shift('(', uinput.KEY_9),
+            Shift(')', uinput.KEY_0),
+            Click('[', uinput.KEY_LEFTBRACE),
+            Click(']', uinput.KEY_RIGHTBRACE),
+            Shift('{', uinput.KEY_LEFTBRACE),
+            Shift('}', uinput.KEY_RIGHTBRACE),
+            Shift('<', uinput.KEY_COMMA),
+            Shift('>', uinput.KEY_DOT),
+            Shift('@', uinput.KEY_2),
+            Shift('#', uinput.KEY_3),
+            Shift('$', uinput.KEY_4),
+            Shift('%', uinput.KEY_5),
+            Shift('^', uinput.KEY_6),
+            Shift('&', uinput.KEY_7),
+            Shift('|', uinput.KEY_BACKSLASH),
+            Click('\\', uinput.KEY_BACKSLASH),
+            Click('`', uinput.KEY_GRAVE),
+            Shift('~', uinput.KEY_GRAVE)
+        ])
+
+
+class Controls(ActionSet):
+    def __init__(self):
+        super().__init__('Controls', [
+            Click('[Space]', uinput.KEY_SPACE),
+            Click('[Tab]', uinput.KEY_TAB),
+            Click('[Enter]', uinput.KEY_ENTER),
+            Click('[Backspace]', uinput.KEY_BACKSPACE),
+            Click('[Delete]', uinput.KEY_DELETE),
+            Click('[Up]', uinput.KEY_UP),
+            Click('[Down]', uinput.KEY_DOWN),
+            Click('[Left]', uinput.KEY_LEFT),
+            Click('[Right]', uinput.KEY_RIGHT),
+            Control('[Ctrl+A]', uinput.KEY_A),
+            Control('[Ctrl+E]', uinput.KEY_E),
+            Control('[Ctrl+W]', uinput.KEY_W),
+            Control('[Ctrl+K]', uinput.KEY_K),
+            Control('[Ctrl+U]', uinput.KEY_U),
+            Control('[Ctrl+Y]', uinput.KEY_Y),
+            Control('[Ctrl+Z]', uinput.KEY_Z),
+            Control('[Ctrl+C]', uinput.KEY_C),
+            Control('[Ctrl+D]', uinput.KEY_D),
         ])

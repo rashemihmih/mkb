@@ -36,3 +36,8 @@ class Combo(Action):
 class Shift(Combo):
     def __init__(self, name, key):
         super().__init__(name, [uinput.KEY_LEFTSHIFT, key])
+
+
+class Control(Combo):
+    def __init__(self, name, key):
+        super().__init__(name, [uinput.KEY_LEFTCTRL, key])

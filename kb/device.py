@@ -53,7 +53,12 @@ device = uinput.Device([
     uinput.KEY_COMMA,
     uinput.KEY_DOT,
     uinput.KEY_SLASH,
-    uinput.KEY_SPACE
+    uinput.KEY_SPACE,
+    uinput.KEY_UP,
+    uinput.KEY_DOWN,
+    uinput.KEY_LEFT,
+    uinput.KEY_RIGHT,
+    uinput.KEY_DELETE
 ])
 
 
